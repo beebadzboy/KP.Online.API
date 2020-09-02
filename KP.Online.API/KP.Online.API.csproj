@@ -59,7 +59,7 @@
       <HintPath>..\packages\FromHeaderAttribute.2.0.4\lib\net45\FromHeaderAttribute.dll</HintPath>
     </Reference>
     <Reference Include="KP.Common">
-      <HintPath>..\..\New folder\KP.Common.dll</HintPath>
+      <HintPath>..\..\beebadzboy\OrderManagement\KP.OrderMGT.API\bin\KP.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
@@ -563,11 +563,6 @@
     <Content Include="Authen\OMAuthen.edmx.diagram">
       <DependentUpon>OMAuthen.edmx</DependentUpon>
     </Content>
-    <None Include="Properties\PublishProfiles\10.3.0.121-Order.pubxml" />
-    <None Include="Properties\PublishProfiles\API KPC %2810.3.0.121%29.pubxml" />
-    <None Include="Properties\PublishProfiles\Local.pubxml" />
-    <None Include="Properties\PublishProfiles\OrderAPI %2810.3.0.121%29.pubxml" />
-    <None Include="Properties\PublishProfiles\OrderManagement %2810.3.0.121%29.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -710,6 +705,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\" />
     <Folder Include="Models\" />
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -737,7 +733,7 @@
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>KP_OrderMGT_API_WCF_OtherService</CachedSettingsPropName>
+      <CachedSettingsPropName>KP_Online_API_WCF_OtherService</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <PropertyGroup>

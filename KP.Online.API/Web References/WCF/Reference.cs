@@ -49,7 +49,7 @@ namespace KP.Online.API.WCF {
         
         /// <remarks/>
         public OtherService() {
-            this.Url = global::KP.Online.API.Properties.Settings.Default.KP_OrderMGT_API_WCF_OtherService;
+            this.Url = global::KP.Online.API.Properties.Settings.Default.KP_Online_API_WCF_OtherService;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

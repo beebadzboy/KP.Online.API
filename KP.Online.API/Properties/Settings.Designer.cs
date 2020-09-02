@@ -27,9 +27,9 @@ namespace KP.Online.API.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:1765/OtherService.svc")]
-        public string KP_OrderMGT_API_WCF_OtherService {
+        public string KP_Online_API_WCF_OtherService {
             get {
-                return ((string)(this["KP_OrderMGT_API_WCF_OtherService"]));
+                return ((string)(this["KP_Online_API_WCF_OtherService"]));
             }
         }
     }
