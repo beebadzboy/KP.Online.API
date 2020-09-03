@@ -1,6 +1,6 @@
 ﻿using KP.Common.Return;
 using KP.Online.API.Authen;
-using KP.Online.API.WCF;
+using KP.Online.API.Other_WebService;
 using System;
 using System.Collections.Generic;
 using System.Configuration;

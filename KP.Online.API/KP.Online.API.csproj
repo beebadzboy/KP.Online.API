@@ -59,7 +59,7 @@
       <HintPath>..\packages\FromHeaderAttribute.2.0.4\lib\net45\FromHeaderAttribute.dll</HintPath>
     </Reference>
     <Reference Include="KP.Common">
-      <HintPath>..\..\beebadzboy\OrderManagement\KP.OrderMGT.API\bin\KP.Common.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Code\New folder\KP.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
@@ -511,9 +511,9 @@
     <Compile Include="Authen\user_master.cs">
       <DependentUpon>OMAuthen.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\FlightController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\SaleQueueController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\POSController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -523,7 +523,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Web References\WCF\Reference.cs">
+    <Compile Include="Web References\Order_WebService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Other_WebService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -563,6 +568,7 @@
     <Content Include="Authen\OMAuthen.edmx.diagram">
       <DependentUpon>OMAuthen.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\Other API 10.3.0.121.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -686,18 +692,29 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Web References\WCF\Flight1.datasource">
+    <Content Include="Web References\Order_WebService\OrderSession.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
-    <Content Include="Web References\WCF\FlightsAll1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
-    <None Include="Web References\WCF\OtherService.wsdl" />
-    <None Include="Web References\WCF\Reference.map">
+    <None Include="Web References\Order_WebService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Web References\WCF\SaleQueue1.datasource">
+    <Content Include="Web References\Order_WebService\SaleAmountByPassport.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\Order_WebService\SaleOrderService.wsdl" />
+    <Content Include="Web References\Other_WebService\Flight.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\Other_WebService\FlightsAll.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\Other_WebService\OtherService.wsdl" />
+    <None Include="Web References\Other_WebService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Web References\Other_WebService\SaleQueue.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
   </ItemGroup>
@@ -705,7 +722,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\" />
     <Folder Include="Models\" />
-    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -724,16 +740,27 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:1765/OtherService.svc%3fsingleWsdl">
+    <WebReferenceUrl Include="http://10.3.0.121:8087/OtherService.svc%3fsingleWsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\WCF\</RelPath>
-      <UpdateFromURL>http://localhost:1765/OtherService.svc%3fsingleWsdl</UpdateFromURL>
+      <RelPath>Web References\Other_WebService\</RelPath>
+      <UpdateFromURL>http://10.3.0.121:8087/OtherService.svc%3fsingleWsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>KP_Online_API_WCF_OtherService</CachedSettingsPropName>
+      <CachedSettingsPropName>KP_Online_API_Other_WebService_OtherService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://10.3.0.121:8087/SaleOrderService.svc%3fsingleWsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Order_WebService\</RelPath>
+      <UpdateFromURL>http://10.3.0.121:8087/SaleOrderService.svc%3fsingleWsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>KP_Online_API_Order_WebService_SaleOrderService</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <PropertyGroup>

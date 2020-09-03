@@ -7,7 +7,7 @@ using System.Configuration;
 using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
-using KP.Online.API.WCF;
+using KP.Online.API.Other_WebService;
 using System.Linq;
 
 namespace KP.Online.API.Controllers
