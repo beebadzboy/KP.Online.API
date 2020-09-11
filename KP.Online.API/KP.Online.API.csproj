@@ -511,9 +511,8 @@
     <Compile Include="Authen\user_master.cs">
       <DependentUpon>OMAuthen.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\FlightController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
-    <Compile Include="Controllers\POSController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -740,10 +739,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:1765/OtherService.svc%3fsingleWsdl">
+    <WebReferenceUrl Include="http://10.3.0.121:8087/OtherService.svc%3fsingleWsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Other_WebService\</RelPath>
-      <UpdateFromURL>http://localhost:1765/OtherService.svc%3fsingleWsdl</UpdateFromURL>
+      <UpdateFromURL>http://10.3.0.121:8087/OtherService.svc%3fsingleWsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -751,10 +750,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>KP_Online_API_Other_WebService_OtherService</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:1765/SaleOrderService.svc%3fsingleWsdl">
+    <WebReferenceUrl Include="http://10.3.0.121:8087/SaleOrderService.svc%3fsingleWsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Order_WebService\</RelPath>
-      <UpdateFromURL>http://localhost:1765/SaleOrderService.svc%3fsingleWsdl</UpdateFromURL>
+      <UpdateFromURL>http://10.3.0.121:8087/SaleOrderService.svc%3fsingleWsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
