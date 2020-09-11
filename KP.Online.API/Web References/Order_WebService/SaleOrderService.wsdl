@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SaleOrderService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SaleOrderService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
       <xs:import namespace="http://schemas.datacontract.org/2004/07/KP.Online.BL.ServiceModel" />
@@ -8,7 +8,7 @@
           <xs:sequence>
             <xs:element minOccurs="0" name="airport_code" nillable="true" type="xs:string" />
             <xs:element minOccurs="0" name="passort" nillable="true" type="xs:string" />
-            <xs:element minOccurs="0" name="flight_date" type="xs:dateTime" />
+            <xs:element minOccurs="0" name="dateString" nillable="true" type="xs:string" />
             <xs:element minOccurs="0" name="flight_code" nillable="true" type="xs:string" />
           </xs:sequence>
         </xs:complexType>
@@ -34,6 +34,20 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
+      <xs:element name="SaveOrderOnlineJson">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="orderJson" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SaveOrderOnlineJsonResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/KP.Online.BL.ServiceModel" minOccurs="0" name="SaveOrderOnlineJsonResult" nillable="true" type="q4:OrderSession" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
       <xs:element name="HoleOrderOnline">
         <xs:complexType>
           <xs:sequence>
@@ -44,7 +58,7 @@
       <xs:element name="HoleOrderOnlineResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/KP.Online.BL.ServiceModel" minOccurs="0" name="HoleOrderOnlineResult" nillable="true" type="q4:OrderSession" />
+            <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/KP.Online.BL.ServiceModel" minOccurs="0" name="HoleOrderOnlineResult" nillable="true" type="q5:OrderSession" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -58,7 +72,7 @@
       <xs:element name="CancelOrderOnlineResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/KP.Online.BL.ServiceModel" minOccurs="0" name="CancelOrderOnlineResult" nillable="true" type="q5:OrderSession" />
+            <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/KP.Online.BL.ServiceModel" minOccurs="0" name="CancelOrderOnlineResult" nillable="true" type="q6:OrderSession" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -72,7 +86,7 @@
       <xs:element name="VoidOrderOnlineResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/KP.Online.BL.ServiceModel" minOccurs="0" name="VoidOrderOnlineResult" nillable="true" type="q6:OrderSession" />
+            <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/KP.Online.BL.ServiceModel" minOccurs="0" name="VoidOrderOnlineResult" nillable="true" type="q7:OrderSession" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -86,7 +100,7 @@
       <xs:element name="CompleteOrderOnlineResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/KP.Online.BL.ServiceModel" minOccurs="0" name="CompleteOrderOnlineResult" nillable="true" type="q7:OrderSession" />
+            <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/KP.Online.BL.ServiceModel" minOccurs="0" name="CompleteOrderOnlineResult" nillable="true" type="q8:OrderSession" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -100,7 +114,7 @@
       <xs:element name="GetOrderOnlineResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/KP.Online.BL.ServiceModel" minOccurs="0" name="GetOrderOnlineResult" nillable="true" type="q8:OrderSession" />
+            <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/KP.Online.BL.ServiceModel" minOccurs="0" name="GetOrderOnlineResult" nillable="true" type="q9:OrderSession" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -116,7 +130,7 @@
       <xs:element name="GetOrderOnlineListResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/KP.Online.BL.ServiceModel" minOccurs="0" name="GetOrderOnlineListResult" nillable="true" type="q9:ArrayOfOrderSession" />
+            <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/KP.Online.BL.ServiceModel" minOccurs="0" name="GetOrderOnlineListResult" nillable="true" type="q10:ArrayOfOrderSession" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -131,7 +145,7 @@
       <xs:element name="UpdateStatusOrderOnlineResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/KP.Online.BL.ServiceModel" minOccurs="0" name="UpdateStatusOrderOnlineResult" nillable="true" type="q10:OrderSession" />
+            <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/KP.Online.BL.ServiceModel" minOccurs="0" name="UpdateStatusOrderOnlineResult" nillable="true" type="q11:OrderSession" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -361,6 +375,12 @@
   <wsdl:message name="ISaleOrderService_SaveOrderOnline_OutputMessage">
     <wsdl:part name="parameters" element="tns:SaveOrderOnlineResponse" />
   </wsdl:message>
+  <wsdl:message name="ISaleOrderService_SaveOrderOnlineJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveOrderOnlineJson" />
+  </wsdl:message>
+  <wsdl:message name="ISaleOrderService_SaveOrderOnlineJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveOrderOnlineJsonResponse" />
+  </wsdl:message>
   <wsdl:message name="ISaleOrderService_HoleOrderOnline_InputMessage">
     <wsdl:part name="parameters" element="tns:HoleOrderOnline" />
   </wsdl:message>
@@ -412,6 +432,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ISaleOrderService/SaveOrderOnline" message="tns:ISaleOrderService_SaveOrderOnline_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISaleOrderService/SaveOrderOnlineResponse" message="tns:ISaleOrderService_SaveOrderOnline_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="SaveOrderOnlineJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISaleOrderService/SaveOrderOnlineJson" message="tns:ISaleOrderService_SaveOrderOnlineJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISaleOrderService/SaveOrderOnlineJsonResponse" message="tns:ISaleOrderService_SaveOrderOnlineJson_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="HoleOrderOnline">
       <wsdl:input wsaw:Action="http://tempuri.org/ISaleOrderService/HoleOrderOnline" message="tns:ISaleOrderService_HoleOrderOnline_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISaleOrderService/HoleOrderOnlineResponse" message="tns:ISaleOrderService_HoleOrderOnline_OutputMessage" />
@@ -454,6 +478,15 @@
     </wsdl:operation>
     <wsdl:operation name="SaveOrderOnline">
       <soap:operation soapAction="http://tempuri.org/ISaleOrderService/SaveOrderOnline" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveOrderOnlineJson">
+      <soap:operation soapAction="http://tempuri.org/ISaleOrderService/SaveOrderOnlineJson" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -527,7 +560,7 @@
   </wsdl:binding>
   <wsdl:service name="SaleOrderService">
     <wsdl:port name="BasicHttpBinding_ISaleOrderService" binding="tns:BasicHttpBinding_ISaleOrderService">
-      <soap:address location="http://10.3.0.121:8087/SaleOrderService.svc" />
+      <soap:address location="http://localhost:1765/SaleOrderService.svc" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

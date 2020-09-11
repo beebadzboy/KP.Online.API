@@ -9,6 +9,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using KP.Online.API.Other_WebService;
 using System.Linq;
+using ServiceStack;
 
 namespace KP.Online.API.Controllers
 {
@@ -19,12 +20,12 @@ namespace KP.Online.API.Controllers
         [BasicAuthentication]
         [MyAuthorize(Roles = "Admin, User, SuperAdmin")]
         [HttpGet]
-        [Route("validate-code")]
-        [ResponseType(typeof(ReturnObject<Flight>))]
+        [System.Web.Http.Route("validate-code")]
+        [ResponseType(typeof(ReturnObject<Models.Flight>))]
         public IHttpActionResult ValidateFlights(string flight_code)
         {
-            ReturnObject<Flight> ret = new ReturnObject<Flight>();
-            ret.Data = new Flight();
+            ReturnObject<Models.Flight> ret = new ReturnObject<Models.Flight>();
+            ret.Data = new Models.Flight();
 
             try
             {
@@ -34,7 +35,8 @@ namespace KP.Online.API.Controllers
                 }
 
                 var srv = new OtherService();
-                ret.Data = srv.CheckFlights(flight_code);
+                var data = srv.CheckFlights(flight_code);
+                ret.Data = data.ConvertTo<Models.Flight>();
                 ret.totalCount = 1;
                 ret.isCompleted = true;
             }
@@ -51,12 +53,12 @@ namespace KP.Online.API.Controllers
         [BasicAuthentication]
         [MyAuthorize(Roles = "Admin, User, SuperAdmin")]
         [HttpGet]
-        [Route("check-flight")]
-        [ResponseType(typeof(ReturnObject<Flight>))]
+        [System.Web.Http.Route("check-flight")]
+        [ResponseType(typeof(ReturnObject<Models.Flight>))]
         public IHttpActionResult CheckFlights(string flight_code, string flight_date)
         {
-            ReturnObject<Flight> ret = new ReturnObject<Flight>();
-            ret.Data = new Flight();
+            ReturnObject<Models.Flight> ret = new ReturnObject<Models.Flight>();
+            ret.Data = new Models.Flight();
 
             try
             {
@@ -72,7 +74,8 @@ namespace KP.Online.API.Controllers
 
 
                 var srv = new OtherService();
-                ret.Data = srv.CheckFlightsBy(flight_code, flight_date);
+                var data = srv.CheckFlightsBy(flight_code, flight_date);
+                ret.Data = data.ConvertTo<Models.Flight>();
                 ret.totalCount = 1;
                 ret.isCompleted = true;
             }
@@ -89,17 +92,18 @@ namespace KP.Online.API.Controllers
         [BasicAuthentication]
         [MyAuthorize(Roles = "Admin, User, SuperAdmin")]
         [HttpGet]
-        [Route("all")]
-        [ResponseType(typeof(ReturnObject<FlightsAll>))]
+        [System.Web.Http.Route("all")]
+        [ResponseType(typeof(ReturnObject<Models.FlightsAll>))]
         public IHttpActionResult GetAll()
         {
-            ReturnObject<FlightsAll> ret = new ReturnObject<FlightsAll>();
-            ret.Data = new FlightsAll();
+            ReturnObject<Models.FlightsAll> ret = new ReturnObject<Models.FlightsAll>();
+            ret.Data = new Models.FlightsAll();
 
             try
             {
                 var srv = new OtherService();
-                ret.Data = srv.GetDataAll();
+                var data = srv.GetDataAll(); 
+                ret.Data = data.ConvertTo<Models.FlightsAll>();
 
                 int d = ret.Data.Departure.Count();
                 int a = ret.Data.Arrival.Count();
@@ -121,17 +125,18 @@ namespace KP.Online.API.Controllers
         [BasicAuthentication]
         [MyAuthorize(Roles = "Admin, User, SuperAdmin")]
         [HttpGet]
-        [Route("arrival")]
-        [ResponseType(typeof(ReturnObject<List<Flight>>))]
+        [System.Web.Http.Route("arrival")]
+        [ResponseType(typeof(ReturnObject<List<Models.Flight>>))]
         public IHttpActionResult GetArrival()
         {
-            ReturnObject<List<Flight>> ret = new ReturnObject<List<Flight>>();
-            ret.Data = new List<Flight>();
+            ReturnObject<List<Models.Flight>> ret = new ReturnObject<List<Models.Flight>>();
+            ret.Data = new List<Models.Flight>();
 
             try
             {
                 var srv = new OtherService();
-                ret.Data = srv.GetDataArrival().ToList();
+                var data = srv.GetDataArrival().ToList();
+                ret.Data = data.ConvertTo<List<Models.Flight>>();
                 ret.totalCount = ret.Data.Count();
                 ret.isCompleted = true;
             }
@@ -148,17 +153,18 @@ namespace KP.Online.API.Controllers
         [BasicAuthentication]
         [MyAuthorize(Roles = "Admin, User, SuperAdmin")]
         [HttpGet]
-        [Route("departure")]
-        [ResponseType(typeof(ReturnObject<List<Flight>>))]
+        [System.Web.Http.Route("departure")]
+        [ResponseType(typeof(ReturnObject<List<Models.Flight>>))]
         public IHttpActionResult GetDeparture()
         {
-            ReturnObject<List<Flight>> ret = new ReturnObject<List<Flight>>();
-            ret.Data = new List<Flight>();
+            ReturnObject<List<Models.Flight>> ret = new ReturnObject<List<Models.Flight>>();
+            ret.Data = new List<Models.Flight>();
 
             try
             {
                 var srv = new OtherService();
-                ret.Data = srv.GetDataDeparture().ToList();
+                var data = srv.GetDataDeparture().ToList();
+                ret.Data = data.ConvertTo<List<Models.Flight>>();
                 ret.totalCount = ret.Data.Count();
                 ret.isCompleted = true;
             }
@@ -174,17 +180,18 @@ namespace KP.Online.API.Controllers
         [BasicAuthentication]
         [MyAuthorize(Roles = "Admin, User, SuperAdmin")]
         [HttpGet]
-        [Route("transfer")]
-        [ResponseType(typeof(ReturnObject<List<Flight>>))]
+        [System.Web.Http.Route("transfer")]
+        [ResponseType(typeof(ReturnObject<List<Models.Flight>>))]
         public IHttpActionResult GetTransfer()
         {
-            ReturnObject<List<Flight>> ret = new ReturnObject<List<Flight>>();
-            ret.Data = new List<Flight>();
+            ReturnObject<List<Models.Flight>> ret = new ReturnObject<List<Models.Flight>>();
+            ret.Data = new List<Models.Flight>();
 
             try
             {
                 var srv = new OtherService();
-                ret.Data = srv.GetDataTransfer().ToList();
+                var data = srv.GetDataTransfer().ToList();
+                ret.Data = data.ConvertTo<List<Models.Flight>>();
                 ret.totalCount = ret.Data.Count();
                 ret.isCompleted = true;
             }

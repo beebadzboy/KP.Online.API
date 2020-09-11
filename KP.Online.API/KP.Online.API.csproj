@@ -517,6 +517,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ResViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -692,6 +693,12 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Web References\Other_WebService\Flight.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\Other_WebService\FlightsAll.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
     <Content Include="Web References\Order_WebService\OrderSession.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
@@ -703,12 +710,6 @@
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
     <None Include="Web References\Order_WebService\SaleOrderService.wsdl" />
-    <Content Include="Web References\Other_WebService\Flight.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
-    <Content Include="Web References\Other_WebService\FlightsAll.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
     <None Include="Web References\Other_WebService\OtherService.wsdl" />
     <None Include="Web References\Other_WebService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -721,7 +722,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -740,10 +740,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://10.3.0.121:8087/OtherService.svc%3fsingleWsdl">
+    <WebReferenceUrl Include="http://localhost:1765/OtherService.svc%3fsingleWsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Other_WebService\</RelPath>
-      <UpdateFromURL>http://10.3.0.121:8087/OtherService.svc%3fsingleWsdl</UpdateFromURL>
+      <UpdateFromURL>http://localhost:1765/OtherService.svc%3fsingleWsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -751,10 +751,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>KP_Online_API_Other_WebService_OtherService</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://10.3.0.121:8087/SaleOrderService.svc%3fsingleWsdl">
+    <WebReferenceUrl Include="http://localhost:1765/SaleOrderService.svc%3fsingleWsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Order_WebService\</RelPath>
-      <UpdateFromURL>http://10.3.0.121:8087/SaleOrderService.svc%3fsingleWsdl</UpdateFromURL>
+      <UpdateFromURL>http://localhost:1765/SaleOrderService.svc%3fsingleWsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

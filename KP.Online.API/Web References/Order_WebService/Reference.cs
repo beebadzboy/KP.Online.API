@@ -33,6 +33,8 @@ namespace KP.Online.API.Order_WebService {
         
         private System.Threading.SendOrPostCallback SaveOrderOnlineOperationCompleted;
         
+        private System.Threading.SendOrPostCallback SaveOrderOnlineJsonOperationCompleted;
+        
         private System.Threading.SendOrPostCallback HoleOrderOnlineOperationCompleted;
         
         private System.Threading.SendOrPostCallback CancelOrderOnlineOperationCompleted;
@@ -92,6 +94,9 @@ namespace KP.Online.API.Order_WebService {
         public event SaveOrderOnlineCompletedEventHandler SaveOrderOnlineCompleted;
         
         /// <remarks/>
+        public event SaveOrderOnlineJsonCompletedEventHandler SaveOrderOnlineJsonCompleted;
+        
+        /// <remarks/>
         public event HoleOrderOnlineCompletedEventHandler HoleOrderOnlineCompleted;
         
         /// <remarks/>
@@ -115,31 +120,29 @@ namespace KP.Online.API.Order_WebService {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ISaleOrderService/ValidateAllowSaleOnline", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public SaleAmountByPassport ValidateAllowSaleOnline([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string airport_code, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string passort, System.DateTime flight_date, [System.Xml.Serialization.XmlIgnoreAttribute()] bool flight_dateSpecified, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string flight_code) {
+        public SaleAmountByPassport ValidateAllowSaleOnline([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string airport_code, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string passort, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string dateString, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string flight_code) {
             object[] results = this.Invoke("ValidateAllowSaleOnline", new object[] {
                         airport_code,
                         passort,
-                        flight_date,
-                        flight_dateSpecified,
+                        dateString,
                         flight_code});
             return ((SaleAmountByPassport)(results[0]));
         }
         
         /// <remarks/>
-        public void ValidateAllowSaleOnlineAsync(string airport_code, string passort, System.DateTime flight_date, bool flight_dateSpecified, string flight_code) {
-            this.ValidateAllowSaleOnlineAsync(airport_code, passort, flight_date, flight_dateSpecified, flight_code, null);
+        public void ValidateAllowSaleOnlineAsync(string airport_code, string passort, string dateString, string flight_code) {
+            this.ValidateAllowSaleOnlineAsync(airport_code, passort, dateString, flight_code, null);
         }
         
         /// <remarks/>
-        public void ValidateAllowSaleOnlineAsync(string airport_code, string passort, System.DateTime flight_date, bool flight_dateSpecified, string flight_code, object userState) {
+        public void ValidateAllowSaleOnlineAsync(string airport_code, string passort, string dateString, string flight_code, object userState) {
             if ((this.ValidateAllowSaleOnlineOperationCompleted == null)) {
                 this.ValidateAllowSaleOnlineOperationCompleted = new System.Threading.SendOrPostCallback(this.OnValidateAllowSaleOnlineOperationCompleted);
             }
             this.InvokeAsync("ValidateAllowSaleOnline", new object[] {
                         airport_code,
                         passort,
-                        flight_date,
-                        flight_dateSpecified,
+                        dateString,
                         flight_code}, this.ValidateAllowSaleOnlineOperationCompleted, userState);
         }
         
@@ -177,6 +180,36 @@ namespace KP.Online.API.Order_WebService {
             if ((this.SaveOrderOnlineCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.SaveOrderOnlineCompleted(this, new SaveOrderOnlineCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ISaleOrderService/SaveOrderOnlineJson", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public OrderSession SaveOrderOnlineJson([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string orderJson) {
+            object[] results = this.Invoke("SaveOrderOnlineJson", new object[] {
+                        orderJson});
+            return ((OrderSession)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void SaveOrderOnlineJsonAsync(string orderJson) {
+            this.SaveOrderOnlineJsonAsync(orderJson, null);
+        }
+        
+        /// <remarks/>
+        public void SaveOrderOnlineJsonAsync(string orderJson, object userState) {
+            if ((this.SaveOrderOnlineJsonOperationCompleted == null)) {
+                this.SaveOrderOnlineJsonOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSaveOrderOnlineJsonOperationCompleted);
+            }
+            this.InvokeAsync("SaveOrderOnlineJson", new object[] {
+                        orderJson}, this.SaveOrderOnlineJsonOperationCompleted, userState);
+        }
+        
+        private void OnSaveOrderOnlineJsonOperationCompleted(object arg) {
+            if ((this.SaveOrderOnlineJsonCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SaveOrderOnlineJsonCompleted(this, new SaveOrderOnlineJsonCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1946,6 +1979,32 @@ namespace KP.Online.API.Order_WebService {
         private object[] results;
         
         internal SaveOrderOnlineCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public OrderSession Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((OrderSession)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void SaveOrderOnlineJsonCompletedEventHandler(object sender, SaveOrderOnlineJsonCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class SaveOrderOnlineJsonCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal SaveOrderOnlineJsonCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

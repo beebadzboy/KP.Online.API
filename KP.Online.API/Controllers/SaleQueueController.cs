@@ -9,6 +9,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using KP.Online.API.Order_WebService;
 
 namespace KP.Online.API.Controllers
 {
@@ -19,12 +20,12 @@ namespace KP.Online.API.Controllers
         [MyAuthorize(Roles = "Admin, SuperAdmin")]
         [HttpGet]
         [Route("sale-by-sku")]
-        [ResponseType(typeof(ReturnObject<List<SaleQueue>>))]
+        [ResponseType(typeof(ReturnObject<List<Models.SaleQueue>>))]
         public IHttpActionResult SaleQueueOnline(string airport_code, char terminal)
         {
 
-            ReturnObject<List<SaleQueue>> ret = new ReturnObject<List<SaleQueue>>();
-            ret.Data = new List<SaleQueue>();
+            ReturnObject<List<Models.SaleQueue>> ret = new ReturnObject<List<Models.SaleQueue>>();
+            ret.Data = new List<Models.SaleQueue>();
 
             try
             {
@@ -39,7 +40,13 @@ namespace KP.Online.API.Controllers
                 }
 
                 var omSrv = new OtherService();
-                ret.Data = omSrv.SaleQueueOnline(airport_code, terminal, true).ToList();
+                var data = omSrv.SaleQueueOnline(airport_code, terminal, true).ToList();
+                var newList = new List<Models.SaleQueue>();
+                foreach (var item in data)
+                {
+                    newList.Add(new Models.SaleQueue(item));
+                }
+                ret.Data = newList;
                 ret.totalCount = ret.Data.Count();
                 ret.isCompleted = true;
             }

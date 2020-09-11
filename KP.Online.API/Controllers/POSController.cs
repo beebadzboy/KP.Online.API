@@ -22,7 +22,7 @@ namespace KP.Online.API.Controllers
         [MyAuthorize(Roles = "Admin, SuperAdmin")]
         [HttpGet]
         [Route("complete-order")]
-        [ResponseType(typeof(ReturnObject<OrderSession>))]
+        [ResponseType(typeof(ReturnObject<Models.OrderSession>))]
         public async Task<IHttpActionResult> CompleteOrderOnlineAsync(string order_no)
         {
             if (string.IsNullOrWhiteSpace(order_no))
@@ -30,12 +30,13 @@ namespace KP.Online.API.Controllers
                 throw new ArgumentException("message", nameof(order_no));
             }
 
-            ReturnObject<OrderSession> ret = new ReturnObject<OrderSession>();
+            ReturnObject<Models.OrderSession> ret = new ReturnObject<Models.OrderSession>();
 
             try
             {
                 var srv = new SaleOrderService();
-                ret.Data = srv.CompleteOrderOnline(order_no);
+                var data = srv.CompleteOrderOnline(order_no);
+                ret.Data = new Models.OrderSession(data);
                 if (ret.Data != null)
                 {
                     // send update to endpoint COMPLETED 
@@ -55,13 +56,15 @@ namespace KP.Online.API.Controllers
                     {
                         if (restResponse.StatusCode != HttpStatusCode.OK)
                         {
-                            ret.Data = srv.UpdateStatusOrderOnline(order_no, restResponse.StatusCode.ToString());
+                            var data2 = srv.UpdateStatusOrderOnline(order_no, restResponse.StatusCode.ToString());
+                            ret.Data = new Models.OrderSession(data2);
                             ret.totalCount = 1;
                             ret.isCompleted = true;
                         }
                         else
                         {
-                            ret.Data = srv.UpdateStatusOrderOnline(order_no, "receivecomplete");
+                            var data3 = srv.UpdateStatusOrderOnline(order_no, "receivecomplete");
+                            ret.Data = new Models.OrderSession(data3);
                             ret.totalCount = 1;
                             ret.isCompleted = true;
                         }
@@ -86,7 +89,7 @@ namespace KP.Online.API.Controllers
         [MyAuthorize(Roles = "Admin, SuperAdmin")]
         [HttpGet]
         [Route("void-order")]
-        [ResponseType(typeof(ReturnObject<OrderSession>))]
+        [ResponseType(typeof(ReturnObject<Models.OrderSession>))]
         public async Task<IHttpActionResult> VoidOrderOnlineAsync(string order_no)
         {
             if (string.IsNullOrWhiteSpace(order_no))
@@ -94,12 +97,13 @@ namespace KP.Online.API.Controllers
                 throw new ArgumentException("message", nameof(order_no));
             }
 
-            ReturnObject<OrderSession> ret = new ReturnObject<OrderSession>();
+            ReturnObject<Models.OrderSession> ret = new ReturnObject<Models.OrderSession>();
 
             try
             {
                 var srv = new SaleOrderService();
-                ret.Data = srv.VoidOrderOnline(order_no);
+                var data = srv.VoidOrderOnline(order_no);
+                ret.Data = new Models.OrderSession(data);
                 if (ret.Data != null)
                 {
                     // send update to endpoint CANCELED 
@@ -119,13 +123,15 @@ namespace KP.Online.API.Controllers
                     {
                         if (restResponse.StatusCode != HttpStatusCode.OK)
                         {
-                            ret.Data = srv.UpdateStatusOrderOnline(order_no, restResponse.StatusCode.ToString());
+                            var data2 = srv.UpdateStatusOrderOnline(order_no, restResponse.StatusCode.ToString());
+                            ret.Data = new Models.OrderSession(data2);
                             ret.totalCount = 0;
                             ret.isCompleted = false;
                         }
                         else
                         {
-                            ret.Data = srv.UpdateStatusOrderOnline(order_no, "refund");
+                            var data3 = srv.UpdateStatusOrderOnline(order_no, "refund");
+                            ret.Data = new Models.OrderSession(data3);
                             ret.totalCount = 1;
                             ret.isCompleted = true;
                         }

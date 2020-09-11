@@ -9,8 +9,14 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using KP.Online.API.Other_WebService;
 using System.Linq;
-using KP.Online.API.Order_WebService;
 using System.Globalization;
+using System.Web.ModelBinding;
+using System.Xml.Serialization;
+using Newtonsoft;
+using KP.Online.API.Models;
+using KP.Online.API.Order_WebService;
+using ServiceStack;
+using Newtonsoft.Json;
 
 namespace KP.Online.API.Controllers
 {
@@ -20,42 +26,37 @@ namespace KP.Online.API.Controllers
         [BasicAuthentication]
         [MyAuthorize(Roles = "Admin, User, SuperAdmin")]
         [HttpGet]
-        [Route("check-purchase-rights")]
-        [ResponseType(typeof(ReturnObject<SaleAmountByPassport>))]
+        [System.Web.Http.Route("check-purchase-rights")]
+        [ResponseType(typeof(ReturnObject<Models.SaleAmountByPassport>))]
         public IHttpActionResult CheckAllowSaleOnline(string airport_code, string flight_code, string flight_date, string passport)
         {
-            ReturnObject<SaleAmountByPassport> ret = new ReturnObject<SaleAmountByPassport>();
+            ReturnObject<Models.SaleAmountByPassport> ret = new ReturnObject<Models.SaleAmountByPassport>();
             try
             {
 
                 if (string.IsNullOrEmpty(airport_code))
                 {
-                    throw new ArgumentException("message", nameof(airport_code));
+                    throw new ArgumentException("airport code is missing.", airport_code);
                 }
 
                 if (string.IsNullOrEmpty(flight_code))
                 {
-                    throw new ArgumentException("message", nameof(flight_code));
+                    throw new ArgumentException("flight code is missing.", nameof(flight_code));
                 }
 
                 if (string.IsNullOrEmpty(passport))
                 {
-                    throw new ArgumentException("message", nameof(passport));
+                    throw new ArgumentException("passport is missing.", nameof(passport));
                 }
 
-                DateTime flight_datetime = Convert.ToDateTime(flight_date);
                 if (string.IsNullOrEmpty(flight_date))
                 {
-                    throw new ArgumentException("message", nameof(flight_date));
-                }
-                else
-                {
-                    CultureInfo provider = CultureInfo.InvariantCulture;
-                    flight_datetime = DateTime.ParseExact(flight_date, "yyyy-MM-dd", provider);
+                    throw new ArgumentException("flight date is missing.", nameof(flight_date));
                 }
 
                 var omSrv = new SaleOrderService();
-                ret.Data = omSrv.ValidateAllowSaleOnline(airport_code, passport, flight_datetime, false, flight_code);
+                var data = omSrv.ValidateAllowSaleOnline(airport_code, passport, flight_date, flight_code);
+                ret.Data = new Models.SaleAmountByPassport(data);
                 ret.totalCount = ret.Data != null ? 1 : 0;
                 ret.isCompleted = true;
             }
@@ -64,28 +65,29 @@ namespace KP.Online.API.Controllers
                 ret.SetMessage(e);
                 ret.Tracking = new ReturnTracking();
             }
-
             return Ok(ret);
         }
 
         [BasicAuthentication]
         [MyAuthorize(Roles = "Admin, User, SuperAdmin")]
         [HttpPost]
-        [Route("save-order")]
-        [ResponseType(typeof(ReturnObject<OrderSession>))]
-        public IHttpActionResult SaveOrderOnline(OrderHeader order)
+        [System.Web.Http.Route("save-order")]
+        [ResponseType(typeof(ReturnObject<Models.OrderSession>))]
+        public IHttpActionResult SaveOrderOnline(Models.OrderHeader order)
         {
             // validate data
-            ReturnObject<OrderSession> ret = new ReturnObject<OrderSession>();
+            ReturnObject<Models.OrderSession> ret = new ReturnObject<Models.OrderSession>();
             try
             {
                 var omSrv = new SaleOrderService();
-                ret.Data = omSrv.SaveOrderOnline(order);
+                var input = order.ConvertTo<Order_WebService.OrderHeader>().ToJson();
+                var data = omSrv.SaveOrderOnlineJson(input);
+                ret.Data = data.ConvertTo<Models.OrderSession>();
                 if (ret.Data == null)
                 {
                     throw new ArgumentException("message", "connection error");
                 }
-
+   
                 ret.totalCount = ret.Data != null ? 1 : 0;
                 ret.isCompleted = true;
 
@@ -102,8 +104,8 @@ namespace KP.Online.API.Controllers
         [BasicAuthentication]
         [MyAuthorize(Roles = "Admin, User, SuperAdmin")]
         [HttpGet]
-        [Route("hold-order")]
-        [ResponseType(typeof(ReturnObject<OrderSession>))]
+        [System.Web.Http.Route("hold-order")]
+        [ResponseType(typeof(ReturnObject<Models.OrderSession>))]
         public IHttpActionResult HoldOrderOnline(string order_no)
         {
             if (string.IsNullOrWhiteSpace(order_no))
@@ -111,11 +113,12 @@ namespace KP.Online.API.Controllers
                 throw new ArgumentException("message", nameof(order_no));
             }
 
-            ReturnObject<OrderSession> ret = new ReturnObject<OrderSession>();
+            ReturnObject<Models.OrderSession> ret = new ReturnObject<Models.OrderSession>();
             try
             {
                 var omSrv = new SaleOrderService();
-                ret.Data = omSrv.HoleOrderOnline(order_no);
+                var data = omSrv.HoleOrderOnline(order_no);
+                ret.Data = new Models.OrderSession(data);
                 ret.totalCount = ret.Data != null ? 1 : 0;
                 ret.isCompleted = true;
             }
@@ -132,8 +135,8 @@ namespace KP.Online.API.Controllers
         [BasicAuthentication]
         [MyAuthorize(Roles = "Admin, User, SuperAdmin")]
         [HttpGet]
-        [Route("cancel-order")]
-        [ResponseType(typeof(ReturnObject<OrderSession>))]
+        [System.Web.Http.Route("cancel-order")]
+        [ResponseType(typeof(ReturnObject<Models.OrderSession>))]
         public IHttpActionResult CancelOrderOnline(string order_no)
         {
             if (string.IsNullOrWhiteSpace(order_no))
@@ -141,12 +144,13 @@ namespace KP.Online.API.Controllers
                 throw new ArgumentException("message", nameof(order_no));
             }
 
-            ReturnObject<OrderSession> ret = new ReturnObject<OrderSession>();
+            ReturnObject<Models.OrderSession> ret = new ReturnObject<Models.OrderSession>();
 
             try
             {
                 var omSrv = new SaleOrderService();
-                ret.Data = omSrv.CancelOrderOnline(order_no);
+                var data = omSrv.CancelOrderOnline(order_no);
+                ret.Data = new Models.OrderSession(data);
                 if (ret.Data == null)
                 {
                     throw new ArgumentException("message", "connection error");
@@ -168,8 +172,8 @@ namespace KP.Online.API.Controllers
         [BasicAuthentication]
         [MyAuthorize(Roles = "Admin, User, SuperAdmin")]
         [HttpGet]
-        [Route("get-order")]
-        [ResponseType(typeof(ReturnObject<OrderSession>))]
+        [System.Web.Http.Route("get-order")]
+        [ResponseType(typeof(ReturnObject<Models.OrderSession>))]
         public IHttpActionResult GetOrderOnline(string order_no)
         {
             if (string.IsNullOrWhiteSpace(order_no))
@@ -177,12 +181,13 @@ namespace KP.Online.API.Controllers
                 throw new ArgumentException("message", nameof(order_no));
             }
 
-            ReturnObject<OrderSession> ret = new ReturnObject<OrderSession>();
+            ReturnObject<Models.OrderSession> ret = new ReturnObject<Models.OrderSession>();
 
             try
             {
                 var omSrv = new SaleOrderService();
-                ret.Data = omSrv.GetOrderOnline(order_no);
+                var data = omSrv.GetOrderOnline(order_no);
+                ret.Data = new Models.OrderSession(data);
                 if (ret.Data == null)
                 {
                     throw new ArgumentException("message", "connection error");
@@ -204,7 +209,7 @@ namespace KP.Online.API.Controllers
         [MyAuthorize(Roles = "Admin, User, SuperAdmin")]
         [HttpGet]
         [System.Web.Http.Route("get-order-list")]
-        [ResponseType(typeof(ReturnObject<List<OrderSession>>))]
+        [ResponseType(typeof(ReturnObject<List<Models.OrderSession>>))]
         public IHttpActionResult GetOrderOnlineList(string airport_code, int? skip, int? take)
         {
             if (string.IsNullOrWhiteSpace(airport_code))
@@ -212,12 +217,18 @@ namespace KP.Online.API.Controllers
                 throw new ArgumentException("message", nameof(airport_code));
             }
 
-            ReturnObject<List<OrderSession>> ret = new ReturnObject<List<OrderSession>>();
+            ReturnObject<List<Models.OrderSession>> ret = new ReturnObject<List<Models.OrderSession>>();
 
             try
             {
                 var srv = new SaleOrderService();
-                ret.Data = srv.GetOrderOnlineList(airport_code, (int)skip,false, (int)take,false).ToList();
+                var data = srv.GetOrderOnlineList(airport_code, (int)skip, false, (int)take, false).ToList();
+                var newList = new List<Models.OrderSession>();
+                foreach (var item in data)
+                {
+                    newList.Add(new Models.OrderSession(item));
+                }
+                ret.Data = newList;
                 ret.totalCount = ret.Data.Count();
                 ret.isCompleted = true;
             }
