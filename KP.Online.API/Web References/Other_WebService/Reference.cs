@@ -23,10 +23,11 @@ namespace KP.Online.API.Other_WebService {
     
     
     /// <remarks/>
+    // CODEGEN: The optional WSDL extension element 'PolicyReference' from namespace 'http://schemas.xmlsoap.org/ws/2004/09/policy' was not handled.
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Web.Services.WebServiceBindingAttribute(Name="BasicHttpBinding_IOtherService", Namespace="http://tempuri.org/")]
+    [System.Web.Services.WebServiceBindingAttribute(Name="BasicHttpsBinding_IOtherService", Namespace="http://tempuri.org/")]
     public partial class OtherService : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
         private System.Threading.SendOrPostCallback CheckFlightsOperationCompleted;
@@ -49,7 +50,7 @@ namespace KP.Online.API.Other_WebService {
         
         /// <remarks/>
         public OtherService() {
-            this.Url = global::KP.Online.API.Properties.Settings.Default.KP_Online_API_Other_WebService_OtherService;
+            this.Url = global::KP.Online.API.Properties.Settings.Default.KP_Online_API_Order_WebService_SaleOrderService;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

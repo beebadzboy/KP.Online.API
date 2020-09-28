@@ -512,7 +512,10 @@
       <DependentUpon>OMAuthen.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\FlightController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\POSController.cs" />
+    <Compile Include="Controllers\SaleQueueController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -569,6 +572,7 @@
       <DependentUpon>OMAuthen.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\Other API 10.3.0.121.pubxml" />
+    <None Include="Properties\PublishProfiles\Production.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -667,6 +671,24 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Web References\Order_WebService\OrderSession.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\Order_WebService\SaleAmountByPassport.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\Order_WebService\SaleOrderService.wsdl" />
+    <None Include="Web References\Order_WebService\SaleOrderService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\Order_WebService\SaleOrderService0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\Order_WebService\SaleOrderService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\Other_WebService\OtherService.disco" />
+    <None Include="Web References\Order_WebService\SaleOrderService.disco" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -698,18 +720,20 @@
     <Content Include="Web References\Other_WebService\FlightsAll.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
-    <Content Include="Web References\Order_WebService\OrderSession.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
     <None Include="Web References\Order_WebService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Web References\Order_WebService\SaleAmountByPassport.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
-    <None Include="Web References\Order_WebService\SaleOrderService.wsdl" />
     <None Include="Web References\Other_WebService\OtherService.wsdl" />
+    <None Include="Web References\Other_WebService\OtherService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\Other_WebService\OtherService0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\Other_WebService\OtherService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Web References\Other_WebService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -739,10 +763,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://10.3.0.121:8087/OtherService.svc%3fsingleWsdl">
+    <WebReferenceUrl Include="https://kpd-api1.kingpower.com/OrderWCF/OtherService.svc">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Other_WebService\</RelPath>
-      <UpdateFromURL>http://10.3.0.121:8087/OtherService.svc%3fsingleWsdl</UpdateFromURL>
+      <UpdateFromURL>https://kpd-api1.kingpower.com/OrderWCF/OtherService.svc</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -750,10 +774,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>KP_Online_API_Other_WebService_OtherService</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://10.3.0.121:8087/SaleOrderService.svc%3fsingleWsdl">
+    <WebReferenceUrl Include="https://kpd-api1.kingpower.com/OrderWCF/SaleOrderService.svc">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Order_WebService\</RelPath>
-      <UpdateFromURL>http://10.3.0.121:8087/SaleOrderService.svc%3fsingleWsdl</UpdateFromURL>
+      <UpdateFromURL>https://kpd-api1.kingpower.com/OrderWCF/SaleOrderService.svc</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

@@ -2,17 +2,23 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="KP.Online.API.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
+    <Setting Name="KP_Return_KPC" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://10.3.26.32:5000</Value>
+    </Setting>
+    <Setting Name="KP_Return_KPC_Token" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">A64803F0A7CEDAC8407538D341BDBE23</Value>
+    </Setting>
     <Setting Name="KP_Online_API_Order_WebService_SaleOrderService" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://10.3.0.121:8087/SaleOrderService.svc</Value>
+      <Value Profile="(Default)">https://kpd-api1.kingpower.com/OrderWCF/SaleOrderService.svc</Value>
     </Setting>
     <Setting Name="KP_Online_API_Other_WebService_OtherService" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://10.3.0.121:8087/OtherService.svc</Value>
+      <Value Profile="(Default)">https://kpd-api1.kingpower.com/OrderWCF/OtherService.svc</Value>
     </Setting>
     <Setting Name="KP_Online_API_WebService_OtherService" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">http://localhost:1765/OtherService.svc</Value>
+      <Value Profile="(Default)">https://kpd-api1.kingpower.com/OrderWCF/OtherService.svc</Value>
     </Setting>
     <Setting Name="KP_Online_API_WebService_SaleOrderService" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">http://localhost:1765/SaleOrderService.svc</Value>
+      <Value Profile="(Default)">https://kpd-api1.kingpower.com/OrderWCF/SaleOrderService.svc</Value>
     </Setting>
   </Settings>
 </SettingsFile>
