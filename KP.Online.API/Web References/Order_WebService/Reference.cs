@@ -23,11 +23,10 @@ namespace KP.Online.API.Order_WebService {
     
     
     /// <remarks/>
-    // CODEGEN: The optional WSDL extension element 'PolicyReference' from namespace 'http://schemas.xmlsoap.org/ws/2004/09/policy' was not handled.
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Web.Services.WebServiceBindingAttribute(Name="BasicHttpsBinding_ISaleOrderService", Namespace="http://tempuri.org/")]
+    [System.Web.Services.WebServiceBindingAttribute(Name="BasicHttpBinding_ISaleOrderService", Namespace="http://tempuri.org/")]
     public partial class SaleOrderService : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
         private System.Threading.SendOrPostCallback ValidateAllowSaleOnlineOperationCompleted;

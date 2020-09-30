@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Results>
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://kpd-api1.kingpower.com/OrderWCF/OtherService.svc?xsd=xsd0" filename="OtherService.xsd" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://kpd-api1.kingpower.com/OrderWCF/OtherService.svc?xsd=xsd1" filename="OtherService0.xsd" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="https://kpd-api1.kingpower.com/OrderWCF/OtherService.svc?disco" filename="OtherService.disco" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://kpd-api1.kingpower.com/OrderWCF/OtherService.svc?xsd=xsd2" filename="OtherService1.xsd" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="https://kpd-api1.kingpower.com/OrderWCF/OtherService.svc?wsdl" filename="OtherService.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://10.1.0.180/OrderWCF/OtherService.svc?xsd=xsd1" filename="OtherService.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://10.1.0.180/OrderWCF/OtherService.svc?wsdl" filename="OtherService.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://10.1.0.180/OrderWCF/OtherService.svc?xsd=xsd0" filename="OtherService0.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://10.1.0.180/OrderWCF/OtherService.svc?xsd=xsd2" filename="OtherService1.xsd" />
   </Results>
 </DiscoveryClientResultsFile>
