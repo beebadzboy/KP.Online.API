@@ -696,19 +696,13 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Web References\Other_WebService\Flight.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
-    <Content Include="Web References\Other_WebService\FlightsAll.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
     <Content Include="Web References\Order_WebService\OrderSession.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
-    <None Include="Web References\Order_WebService\Reference.map">
+    <Content Include="Web References\Order_WebService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    </Content>
     <Content Include="Web References\Order_WebService\SaleAmountByPassport.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
@@ -722,6 +716,12 @@
     <None Include="Web References\Order_WebService\SaleOrderService1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Web References\Other_WebService\Flight1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\Other_WebService\FlightsAll1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
     <None Include="Web References\Other_WebService\OtherService.wsdl" />
     <None Include="Web References\Other_WebService\OtherService.xsd">
       <SubType>Designer</SubType>
@@ -732,11 +732,11 @@
     <None Include="Web References\Other_WebService\OtherService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Web References\Other_WebService\Reference.map">
+    <Content Include="Web References\Other_WebService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <Content Include="Web References\Other_WebService\SaleQueue.datasource">
+    </Content>
+    <Content Include="Web References\Other_WebService\SaleQueue1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
   </ItemGroup>
@@ -761,21 +761,21 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://10.1.0.180/OrderWCF/OtherService.svc%3fwsdl">
+    <WebReferenceUrl Include="http://localhost:1765/OtherService.svc%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Other_WebService\</RelPath>
-      <UpdateFromURL>http://10.1.0.180/OrderWCF/OtherService.svc%3fwsdl</UpdateFromURL>
+      <UpdateFromURL>http://localhost:1765/OtherService.svc%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>KP_Online_API_Other_WebService_OtherService</CachedSettingsPropName>
+      <CachedSettingsPropName>KP_Online_API_Other_WebSerivce_OtherService</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://10.1.0.180/OrderWCF/SaleOrderService.svc%3fwsdl">
+    <WebReferenceUrl Include="http://localhost:1765/SaleOrderService.svc%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Order_WebService\</RelPath>
-      <UpdateFromURL>http://10.1.0.180/OrderWCF/SaleOrderService.svc%3fwsdl</UpdateFromURL>
+      <UpdateFromURL>http://localhost:1765/SaleOrderService.svc%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

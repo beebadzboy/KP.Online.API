@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Results>
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://10.1.0.180/OrderWCF/SaleOrderService.svc?xsd=xsd2" filename="SaleOrderService.xsd" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://10.1.0.180/OrderWCF/SaleOrderService.svc?xsd=xsd1" filename="SaleOrderService0.xsd" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://10.1.0.180/OrderWCF/SaleOrderService.svc?wsdl" filename="SaleOrderService.wsdl" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://10.1.0.180/OrderWCF/SaleOrderService.svc?xsd=xsd0" filename="SaleOrderService1.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:1765/SaleOrderService.svc?xsd=xsd0" filename="SaleOrderService.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:1765/SaleOrderService.svc?xsd=xsd1" filename="SaleOrderService0.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:1765/SaleOrderService.svc?xsd=xsd2" filename="SaleOrderService1.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://localhost:1765/SaleOrderService.svc?wsdl" filename="SaleOrderService.wsdl" />
   </Results>
 </DiscoveryClientResultsFile>

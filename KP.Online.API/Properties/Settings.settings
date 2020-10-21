@@ -14,11 +14,11 @@
     <Setting Name="KP_Online_API_WebService_SaleOrderService" Type="System.String" Scope="Application">
       <Value Profile="(Default)">https://kpd-api1.kingpower.com/OrderWCF/SaleOrderService.svc</Value>
     </Setting>
-    <Setting Name="KP_Online_API_Other_WebService_OtherService" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://10.1.0.180/OrderWCF/OtherService.svc</Value>
-    </Setting>
     <Setting Name="KP_Online_API_Order_WebService_SaleOrderService" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://10.1.0.180/OrderWCF/SaleOrderService.svc</Value>
+      <Value Profile="(Default)">http://localhost:1765/SaleOrderService.svc</Value>
+    </Setting>
+    <Setting Name="KP_Online_API_Other_WebSerivce_OtherService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:1765/OtherService.svc</Value>
     </Setting>
   </Settings>
 </SettingsFile>

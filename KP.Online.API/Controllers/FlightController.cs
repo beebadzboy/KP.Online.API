@@ -10,6 +10,7 @@ using System.Web.Http.Description;
 using KP.Online.API.Other_WebService;
 using System.Linq;
 using ServiceStack;
+using System.Globalization;
 
 namespace KP.Online.API.Controllers
 {
@@ -29,16 +30,22 @@ namespace KP.Online.API.Controllers
 
             try
             {
-                if (string.IsNullOrEmpty(flight_code))
-                {
-                    throw new ArgumentException("message", nameof(flight_code));
-                }
+                CultureInfo ci = CultureInfo.InvariantCulture;
+                CultureInfo _cultureEnInfo = new CultureInfo("en-US");
+                var date = DateTime.Now.Date.ToString("yyyy/MM/dd", ci);
+                var date2 = DateTime.Now.Date.ToString("yyyy/MM/dd", _cultureEnInfo);
 
-                var srv = new OtherService();
-                var data = srv.CheckFlights(flight_code);
-                ret.Data = data.ConvertTo<Models.Flight>();
-                ret.totalCount = 1;
-                ret.isCompleted = true;
+
+                //if (string.IsNullOrEmpty(flight_code))
+                //{
+                //    throw new ArgumentException("message", nameof(flight_code));
+                //}
+
+                //var srv = new OtherService();
+                //var data = srv.CheckFlights(flight_code);
+                //ret.Data = data.ConvertTo<Models.Flight>();
+                //ret.totalCount = 1;
+                //ret.isCompleted = true;
             }
             catch (Exception e)
             {

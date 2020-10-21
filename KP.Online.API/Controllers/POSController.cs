@@ -43,7 +43,8 @@ namespace KP.Online.API.Controllers
                     var endpoint = ConfigurationManager.AppSettings["KP_Return_KPC"];
                     var service = ConfigurationManager.AppSettings["KP_Service_KPC"];
                     var client = new RestClient(endpoint);
-                    var request = new RestRequest(String.Format("{0}/api/Orders/{1}/Status", service, order_no), Method.POST);
+                    var request = new RestRequest(String.Format("api/Orders/{0}/Status", order_no), Method.POST);
+                    //var request = new RestRequest(String.Format("{0}/api/Orders/{1}/Status", service, order_no), Method.POST);
                     var accessToken = ConfigurationManager.AppSettings["KP_Return_KPC_Token"];
                     request.AddHeader("AccessToken", accessToken);
                     request.AddHeader("Content-Type", "application/json");
@@ -114,7 +115,8 @@ namespace KP.Online.API.Controllers
                     var endpoint = ConfigurationManager.AppSettings["KP_Return_KPC"];
                     var service = ConfigurationManager.AppSettings["KP_Service_KPC"];
                     var client = new RestClient(endpoint);
-                    var request = new RestRequest(String.Format("{0}/api/Orders/{1}/Status", service, order_no), Method.POST);
+                    var request = new RestRequest(String.Format("api/Orders/{0}/Status", order_no), Method.POST);
+                    //var request = new RestRequest(String.Format("{0}/api/Orders/{1}/Status", service, order_no), Method.POST);
                     var accessToken = ConfigurationManager.AppSettings["KP_Return_KPC_Token"];
                     request.AddHeader("AccessToken", accessToken);
                     request.AddHeader("Content-Type", "application/json");
