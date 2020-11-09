@@ -25,57 +25,21 @@ namespace KP.Online.API.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://10.3.26.32:5000")]
-        public string KP_Return_KPC {
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://10.3.0.121:8087/OtherService.svc")]
+        public string KP_Online_API_Order_WebService_OtherService {
             get {
-                return ((string)(this["KP_Return_KPC"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("A64803F0A7CEDAC8407538D341BDBE23")]
-        public string KP_Return_KPC_Token {
-            get {
-                return ((string)(this["KP_Return_KPC_Token"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://kpd-api1.kingpower.com/OrderWCF/OtherService.svc")]
-        public string KP_Online_API_WebService_OtherService {
-            get {
-                return ((string)(this["KP_Online_API_WebService_OtherService"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://kpd-api1.kingpower.com/OrderWCF/SaleOrderService.svc")]
-        public string KP_Online_API_WebService_SaleOrderService {
-            get {
-                return ((string)(this["KP_Online_API_WebService_SaleOrderService"]));
+                return ((string)(this["KP_Online_API_Order_WebService_OtherService"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:1765/SaleOrderService.svc")]
-        public string KP_Online_API_Order_WebService_SaleOrderService {
+        [global::System.Configuration.DefaultSettingValueAttribute("http://10.3.0.121:8087/SaleOrderService.svc")]
+        public string KP_Online_API_SaleOrder_WebService_SaleOrderService {
             get {
-                return ((string)(this["KP_Online_API_Order_WebService_SaleOrderService"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:1765/OtherService.svc")]
-        public string KP_Online_API_Other_WebSerivce_OtherService {
-            get {
-                return ((string)(this["KP_Online_API_Other_WebSerivce_OtherService"]));
+                return ((string)(this["KP_Online_API_SaleOrder_WebService_SaleOrderService"]));
             }
         }
     }

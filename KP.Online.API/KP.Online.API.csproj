@@ -514,8 +514,6 @@
     <Compile Include="Controllers\FlightController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
-    <Compile Include="Controllers\POSController.cs" />
-    <Compile Include="Controllers\SaleQueueController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -526,12 +524,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Web References\Order_WebService\Reference.cs">
+    <Compile Include="Web References\Other_WebService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
-    <Compile Include="Web References\Other_WebService\Reference.cs">
+    <Compile Include="Web References\SaleOrder_WebService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -696,26 +694,6 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Web References\Order_WebService\OrderSession.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
-    <Content Include="Web References\Order_WebService\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
-    <Content Include="Web References\Order_WebService\SaleAmountByPassport.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
-    <None Include="Web References\Order_WebService\SaleOrderService.wsdl" />
-    <None Include="Web References\Order_WebService\SaleOrderService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Web References\Order_WebService\SaleOrderService0.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Web References\Order_WebService\SaleOrderService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="Web References\Other_WebService\Flight1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
@@ -723,22 +701,33 @@
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
     <None Include="Web References\Other_WebService\OtherService.wsdl" />
-    <None Include="Web References\Other_WebService\OtherService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Web References\Other_WebService\OtherService0.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Web References\Other_WebService\OtherService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="Web References\Other_WebService\Reference.map">
+    <None Include="Web References\Other_WebService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
     <Content Include="Web References\Other_WebService\SaleQueue1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
+    <Content Include="Web References\SaleOrder_WebService\OrderSession.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\SaleOrder_WebService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Web References\SaleOrder_WebService\SaleAmountByPassport.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\SaleOrder_WebService\SaleOrderService.wsdl" />
+    <None Include="Web References\SaleOrder_WebService\SaleOrderService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SaleOrder_WebService\SaleOrderService0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SaleOrder_WebService\SaleOrderService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -761,27 +750,27 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:1765/OtherService.svc%3fwsdl">
+    <WebReferenceUrl Include="http://10.3.0.121:8087/OtherService.svc%3fsingleWsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Other_WebService\</RelPath>
-      <UpdateFromURL>http://localhost:1765/OtherService.svc%3fwsdl</UpdateFromURL>
+      <UpdateFromURL>http://10.3.0.121:8087/OtherService.svc%3fsingleWsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>KP_Online_API_Other_WebSerivce_OtherService</CachedSettingsPropName>
+      <CachedSettingsPropName>KP_Online_API_Order_WebService_OtherService</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:1765/SaleOrderService.svc%3fwsdl">
+    <WebReferenceUrl Include="http://10.3.0.121:8087/SaleOrderService.svc%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Order_WebService\</RelPath>
-      <UpdateFromURL>http://localhost:1765/SaleOrderService.svc%3fwsdl</UpdateFromURL>
+      <RelPath>Web References\SaleOrder_WebService\</RelPath>
+      <UpdateFromURL>http://10.3.0.121:8087/SaleOrderService.svc%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>KP_Online_API_Order_WebService_SaleOrderService</CachedSettingsPropName>
+      <CachedSettingsPropName>KP_Online_API_SaleOrder_WebService_SaleOrderService</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <PropertyGroup>

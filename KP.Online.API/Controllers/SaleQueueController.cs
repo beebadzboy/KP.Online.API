@@ -9,7 +9,6 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using KP.Online.API.Order_WebService;
 
 namespace KP.Online.API.Controllers
 {

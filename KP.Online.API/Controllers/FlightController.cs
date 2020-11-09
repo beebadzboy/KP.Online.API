@@ -36,16 +36,16 @@ namespace KP.Online.API.Controllers
                 var date2 = DateTime.Now.Date.ToString("yyyy/MM/dd", _cultureEnInfo);
 
 
-                //if (string.IsNullOrEmpty(flight_code))
-                //{
-                //    throw new ArgumentException("message", nameof(flight_code));
-                //}
+                if (string.IsNullOrEmpty(flight_code))
+                {
+                    throw new ArgumentException("message", nameof(flight_code));
+                }
 
-                //var srv = new OtherService();
-                //var data = srv.CheckFlights(flight_code);
-                //ret.Data = data.ConvertTo<Models.Flight>();
-                //ret.totalCount = 1;
-                //ret.isCompleted = true;
+                var srv = new OtherService();
+                var data = srv.CheckFlights(flight_code);
+                ret.Data = data.ConvertTo<Models.Flight>();
+                ret.totalCount = 1;
+                ret.isCompleted = true;
             }
             catch (Exception e)
             {

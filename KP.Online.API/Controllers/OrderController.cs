@@ -7,16 +7,17 @@ using System.Configuration;
 using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
-using KP.Online.API.Other_WebService;
+
 using System.Linq;
 using System.Globalization;
 using System.Web.ModelBinding;
 using System.Xml.Serialization;
 using Newtonsoft;
 using KP.Online.API.Models;
-using KP.Online.API.Order_WebService;
+
 using ServiceStack;
 using Newtonsoft.Json;
+using KP.Online.API.SaleOrder_WebService;
 
 namespace KP.Online.API.Controllers
 {
@@ -80,7 +81,7 @@ namespace KP.Online.API.Controllers
             try
             {
                 var omSrv = new SaleOrderService();
-                var input = order.ConvertTo<Order_WebService.OrderHeader>().ToJson();
+                var input = order.ConvertTo<SaleOrder_WebService.OrderHeader>().ToJson();
                 var data = omSrv.SaveOrderOnlineJson(input);
                 ret.Data = data.ConvertTo<Models.OrderSession>();
                 if (ret.Data == null)

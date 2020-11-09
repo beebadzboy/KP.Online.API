@@ -5,7 +5,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Security.Cryptography.X509Certificates;
 using System.ServiceModel;
-using KP.Online.API.Order_WebService;
+using KP.Online.API.SaleOrder_WebService;
 using Microsoft.Ajax.Utilities;
 using ServiceStack;
 
@@ -33,7 +33,7 @@ namespace KP.Online.API.Models
 
         public SaleAmountByPassport() { }
 
-        public SaleAmountByPassport(Order_WebService.SaleAmountByPassport data) {
+        public SaleAmountByPassport(SaleOrder_WebService.SaleAmountByPassport data) {
 
             this.SaleAmt = data.SaleAmt;
             this.Alcohol = data.Alcohol;
@@ -85,14 +85,14 @@ namespace KP.Online.API.Models
         [DataMember]
         public List<Payment> Payments { get; set; }
 
-        public Order_WebService.OrderHeader ConvInput(OrderHeader order)
+        public SaleOrder_WebService.OrderHeader ConvInput(OrderHeader order)
         {
-            var inputOrder = new Order_WebService.OrderHeader();
-            inputOrder.Billing = order.Billing.ConvertTo<Order_WebService.Billing>();
-            inputOrder.Flight = order.Flight.ConvertTo<Order_WebService.Flight>();
-            inputOrder.Items = order.Items.ConvertTo<Order_WebService.ItemSKU[]>();
-            inputOrder.NewOrder = order.NewOrder.ConvertTo<Order_WebService.Order>();
-            inputOrder.Payments = order.Payments.ConvertTo<Order_WebService.Payment[]>();
+            var inputOrder = new SaleOrder_WebService.OrderHeader();
+            inputOrder.Billing = order.Billing.ConvertTo<SaleOrder_WebService.Billing>();
+            inputOrder.Flight = order.Flight.ConvertTo<SaleOrder_WebService.Flight>();
+            inputOrder.Items = order.Items.ConvertTo<SaleOrder_WebService.ItemSKU[]>();
+            inputOrder.NewOrder = order.NewOrder.ConvertTo<SaleOrder_WebService.Order>();
+            inputOrder.Payments = order.Payments.ConvertTo<SaleOrder_WebService.Payment[]>();
 
             return inputOrder;
         }
@@ -127,7 +127,7 @@ namespace KP.Online.API.Models
 
         public OrderSession() { }
 
-        public OrderSession(Order_WebService.OrderSession session)
+        public OrderSession(SaleOrder_WebService.OrderSession session)
         {
             this.SessionGuid = new Guid(session.SessionGuid);
             this.SessionId = (long)session.SessionId;

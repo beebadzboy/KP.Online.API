@@ -13,7 +13,7 @@
 // 
 #pragma warning disable 1591
 
-namespace KP.Online.API.Order_WebService {
+namespace KP.Online.API.SaleOrder_WebService {
     using System;
     using System.Web.Services;
     using System.Diagnostics;
@@ -53,7 +53,7 @@ namespace KP.Online.API.Order_WebService {
         
         /// <remarks/>
         public SaleOrderService() {
-            this.Url = global::KP.Online.API.Properties.Settings.Default.KP_Online_API_Order_WebService_SaleOrderService;
+            this.Url = global::KP.Online.API.Properties.Settings.Default.KP_Online_API_SaleOrder_WebService_SaleOrderService;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;
