@@ -1,11 +1,367 @@
 <?xml version="1.0" encoding="utf-8"?>
 <wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SaleOrderService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
-    <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="http://10.3.0.121:8087/SaleOrderService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://10.3.0.121:8087/SaleOrderService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://10.3.0.121:8087/SaleOrderService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/KP.Online.BL.ServiceModel" />
-    </xsd:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/KP.Online.BL.ServiceModel" />
+      <xs:element name="ValidateAllowSaleOnline">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="airport_code" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="passort" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="dateString" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="flight_code" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateAllowSaleOnlineResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/KP.Online.BL.ServiceModel" minOccurs="0" name="ValidateAllowSaleOnlineResult" nillable="true" type="q1:SaleAmountByPassport" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SaveOrderOnline">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/KP.Online.BL.ServiceModel" minOccurs="0" name="order" nillable="true" type="q2:OrderHeader" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SaveOrderOnlineResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/KP.Online.BL.ServiceModel" minOccurs="0" name="SaveOrderOnlineResult" nillable="true" type="q3:OrderSession" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SaveOrderOnlineJson">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="orderJson" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SaveOrderOnlineJsonResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/KP.Online.BL.ServiceModel" minOccurs="0" name="SaveOrderOnlineJsonResult" nillable="true" type="q4:OrderSession" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="HoleOrderOnline">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="order" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="HoleOrderOnlineResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/KP.Online.BL.ServiceModel" minOccurs="0" name="HoleOrderOnlineResult" nillable="true" type="q5:OrderSession" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CancelOrderOnline">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="order_no" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CancelOrderOnlineResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/KP.Online.BL.ServiceModel" minOccurs="0" name="CancelOrderOnlineResult" nillable="true" type="q6:OrderSession" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="VoidOrderOnline">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="order_no" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="VoidOrderOnlineResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/KP.Online.BL.ServiceModel" minOccurs="0" name="VoidOrderOnlineResult" nillable="true" type="q7:OrderSession" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CompleteOrderOnline">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="order_no" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CompleteOrderOnlineResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/KP.Online.BL.ServiceModel" minOccurs="0" name="CompleteOrderOnlineResult" nillable="true" type="q8:OrderSession" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetOrderOnline">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="order_no" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetOrderOnlineResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/KP.Online.BL.ServiceModel" minOccurs="0" name="GetOrderOnlineResult" nillable="true" type="q9:OrderSession" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetOrderOnlineList">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="airport_code" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="skip" type="xs:int" />
+            <xs:element minOccurs="0" name="take" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetOrderOnlineListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/KP.Online.BL.ServiceModel" minOccurs="0" name="GetOrderOnlineListResult" nillable="true" type="q10:ArrayOfOrderSession" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateStatusOrderOnline">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="order_no" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="status" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateStatusOrderOnlineResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/KP.Online.BL.ServiceModel" minOccurs="0" name="UpdateStatusOrderOnlineResult" nillable="true" type="q11:OrderSession" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/KP.Online.BL.ServiceModel" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/KP.Online.BL.ServiceModel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xs:complexType name="SaleAmountByPassport">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Alcohol" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="SaleAmt" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Tobacco" nillable="true" type="xs:decimal" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SaleAmountByPassport" nillable="true" type="tns:SaleAmountByPassport" />
+      <xs:complexType name="OrderHeader">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Billing" nillable="true" type="tns:Billing" />
+          <xs:element minOccurs="0" name="Flight" nillable="true" type="tns:Flight" />
+          <xs:element minOccurs="0" name="Items" nillable="true" type="tns:ArrayOfItemSKU" />
+          <xs:element minOccurs="0" name="NewOrder" nillable="true" type="tns:Order" />
+          <xs:element minOccurs="0" name="Payments" nillable="true" type="tns:ArrayOfPayment" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="OrderHeader" nillable="true" type="tns:OrderHeader" />
+      <xs:complexType name="Billing">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BillAddress1" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BillAddress2" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BillAddress3" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Birthday" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CountryCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CountryName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="District" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Fax" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MobilePhone" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PassportNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PersonalTitle" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PhoneCountryCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PostalCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Province" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Sex" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Street" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Telephone" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Billing" nillable="true" type="tns:Billing" />
+      <xs:complexType name="Flight">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AirlineCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AirlineName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AirportCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ArrivalAirport" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DepartureAirport" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FlightCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FlightDesc" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PickUp" nillable="true" type="tns:PickUp" />
+          <xs:element minOccurs="0" name="Terminal" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Time" nillable="true" type="tns:FlightTime" />
+          <xs:element minOccurs="0" name="WeekDays" nillable="true" type="tns:ArrayOfFlightWeekDays" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Flight" nillable="true" type="tns:Flight" />
+      <xs:complexType name="PickUp">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Detail" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MapImg" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="PickUp" nillable="true" type="tns:PickUp" />
+      <xs:complexType name="FlightTime">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Time24" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TimeAMPM" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="FlightTime" nillable="true" type="tns:FlightTime" />
+      <xs:complexType name="ArrayOfFlightWeekDays">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="FlightWeekDays" nillable="true" type="tns:FlightWeekDays" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfFlightWeekDays" nillable="true" type="tns:ArrayOfFlightWeekDays" />
+      <xs:complexType name="FlightWeekDays">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FullName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ShortName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="FlightWeekDays" nillable="true" type="tns:FlightWeekDays" />
+      <xs:complexType name="ArrayOfItemSKU">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ItemSKU" nillable="true" type="tns:ItemSKU" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfItemSKU" nillable="true" type="tns:ArrayOfItemSKU" />
+      <xs:complexType name="ItemSKU">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Amount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Discount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="DiscountPer" type="xs:decimal" />
+          <xs:element minOccurs="0" name="DiscountRate" type="xs:decimal" />
+          <xs:element minOccurs="0" name="MaterialCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Net" type="xs:decimal" />
+          <xs:element minOccurs="0" name="PromoCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Quantity" type="xs:decimal" />
+          <xs:element minOccurs="0" name="RecNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SPDiscount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="SPDiscountPer" type="xs:decimal" />
+          <xs:element minOccurs="0" name="SPDiscountRate" type="xs:decimal" />
+          <xs:element minOccurs="0" name="SPPromoCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SellerAdjustFee" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SellingPrice" type="xs:decimal" />
+          <xs:element minOccurs="0" name="SubOrderType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TotalDiscount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="TotalNet" type="xs:decimal" />
+          <xs:element minOccurs="0" name="ord_no" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ItemSKU" nillable="true" type="tns:ItemSKU" />
+      <xs:complexType name="Order">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AgentCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DeliveryCost" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DutyTax" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="InvoiceNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsAcceptMedia" type="xs:boolean" />
+          <xs:element minOccurs="0" name="MemberID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OrderNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PaymentNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserToken" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="WeChatID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Order" nillable="true" type="tns:Order" />
+      <xs:complexType name="ArrayOfPayment">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Payment" nillable="true" type="tns:Payment" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfPayment" nillable="true" type="tns:ArrayOfPayment" />
+      <xs:complexType name="Payment">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Amount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Payment" nillable="true" type="tns:Payment" />
+      <xs:complexType name="OrderSession">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="POSInvoiceNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="POSOrderNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="POSSessionKey" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="POSStatus" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SaleOrderNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SaleOrderStatus" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SessionGuid" type="ser:guid" />
+          <xs:element minOccurs="0" name="SessionId" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="OrderSession" nillable="true" type="tns:OrderSession" />
+      <xs:complexType name="ArrayOfOrderSession">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderSession" nillable="true" type="tns:OrderSession" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfOrderSession" nillable="true" type="tns:ArrayOfOrderSession" />
+    </xs:schema>
   </wsdl:types>
   <wsdl:message name="ISaleOrderService_ValidateAllowSaleOnline_InputMessage">
     <wsdl:part name="parameters" element="tns:ValidateAllowSaleOnline" />

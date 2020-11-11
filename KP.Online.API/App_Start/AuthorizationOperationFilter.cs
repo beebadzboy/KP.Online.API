@@ -60,7 +60,7 @@ namespace KP.Online.API.App_Start
             if (skip != null)
             {
                 skip.description = "เริ่มต้นข้อมูลที่";
-                skip.@default = "0";                                                                                                                                                                                                                    char 
+                skip.@default = "0";                                                                                                                                                                                                                     
             }
 
             var take = operation.parameters.FirstOrDefault(x => x.name == "take");

@@ -49,7 +49,7 @@ namespace KP.Online.API.Other_WebService {
         
         /// <remarks/>
         public OtherService() {
-            this.Url = global::KP.Online.API.Properties.Settings.Default.KP_Online_API_Order_WebService_OtherService;
+            this.Url = global::KP.Online.API.Properties.Settings.Default.KP_Online_API_Other_WebService_OtherService;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

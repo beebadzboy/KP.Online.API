@@ -2,7 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="KP.Online.API.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="KP_Online_API_Order_WebService_OtherService" Type="(Web Service URL)" Scope="Application">
+    <Setting Name="KP_Online_API_Other_WebService_OtherService" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://10.3.0.121:8087/OtherService.svc</Value>
     </Setting>
     <Setting Name="KP_Online_API_SaleOrder_WebService_SaleOrderService" Type="(Web Service URL)" Scope="Application">

@@ -27,9 +27,9 @@ namespace KP.Online.API.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("http://10.3.0.121:8087/OtherService.svc")]
-        public string KP_Online_API_Order_WebService_OtherService {
+        public string KP_Online_API_Other_WebService_OtherService {
             get {
-                return ((string)(this["KP_Online_API_Order_WebService_OtherService"]));
+                return ((string)(this["KP_Online_API_Other_WebService_OtherService"]));
             }
         }
         

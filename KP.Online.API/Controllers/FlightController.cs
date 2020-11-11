@@ -30,12 +30,6 @@ namespace KP.Online.API.Controllers
 
             try
             {
-                CultureInfo ci = CultureInfo.InvariantCulture;
-                CultureInfo _cultureEnInfo = new CultureInfo("en-US");
-                var date = DateTime.Now.Date.ToString("yyyy/MM/dd", ci);
-                var date2 = DateTime.Now.Date.ToString("yyyy/MM/dd", _cultureEnInfo);
-
-
                 if (string.IsNullOrEmpty(flight_code))
                 {
                     throw new ArgumentException("message", nameof(flight_code));
